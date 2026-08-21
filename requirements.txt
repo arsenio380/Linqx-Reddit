@@ -1,0 +1,9 @@
+# Project dependencies. Install them with:
+#   pip install -r requirements.txt
+
+# HTTP library used by reddit.py and slack.py.
+requests>=2.31
+
+# Loads variables from the local .env file so scripts can read
+# SLACK_WEBHOOK_URL without you exporting it by hand.
+python-dotenv>=1.0
