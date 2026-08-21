@@ -1,0 +1,23 @@
+start_date: 2026-08-22
+account: arsenbuildz
+launch_day: 12
+
+karma_subs: [AskReddit, NoStupidQuestions, CasualConversation, explainlikeimfive]
+listen_subs: [LosAngeles, AskLosAngeles, ucla, USC, socialskills, Needafriend, MakeNewFriendsHere]
+listen_keywords: ["new to LA", "make friends", "lonely", "meet people", "moving to LA", "freshman"]
+
+days:
+  - {day: 1,  goal: "Set up profile, join subs, lurk. No posts.", karma_target: 0,   task_type: setup}
+  - {day: 2,  goal: "10-15 comments in karma subs, sort by Rising", karma_target: 40,  task_type: karma}
+  - {day: 3,  goal: "10-15 comments", karma_target: 80,  task_type: karma}
+  - {day: 4,  goal: "10-15 comments", karma_target: 120, task_type: karma}
+  - {day: 5,  goal: "Comments + start participating in LA/college subs", karma_target: 170, task_type: karma}
+  - {day: 6,  goal: "Comments across mixed subs", karma_target: 220, task_type: karma}
+  - {day: 7,  goal: "Comments. Run a shadowban check.", karma_target: 260, task_type: karma}
+  - {day: 8,  goal: "Read r/SideProject and r/startups rules end to end. Draft founder post.", karma_target: 300, task_type: prep}
+  - {day: 9,  goal: "Modmail r/ucla and r/USC about founder launch posts. Keep commenting.", karma_target: 330, task_type: prep}
+  - {day: 10, goal: "Post the no-link 'how do people make friends in LA' question in r/AskLosAngeles", karma_target: 350, task_type: post}
+  - {day: 11, goal: "Post in r/startups Share Your Startup megathread", karma_target: 370, task_type: post}
+  - {day: 12, goal: "LAUNCH: founder story to r/SideProject, 8-11am PT, App Store link. Reply to every comment.", karma_target: 400, task_type: launch}
+  - {day: 13, goal: "Post 'early LA users wanted' to r/iosapps. Comment (no link) in r/socialskills.", karma_target: 400, task_type: post}
+  - {day: 14, goal: "Thank commenters, post milestone update where allowed.", karma_target: 400, task_type: post}
