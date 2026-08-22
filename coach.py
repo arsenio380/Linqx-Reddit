@@ -75,8 +75,35 @@ def resolve_day(plan, today, start_date):
     }
 
 
+def format_entry(entry):
+    """Build the day's detail block: goal, where, post (if any), when (if any).
+
+    Everything stays lowercase and casual — except the post text, which is
+    printed exactly as written in plan.yaml so it can be copy-pasted straight
+    to reddit.
+    """
+    lines = [f"goal: {entry['goal']}"]
+
+    where = entry.get("where")
+    if where:
+        lines.append(f"where: {where}")
+
+    post = entry.get("post")
+    if post:
+        # Print the post verbatim — no lowercasing, no trimming.
+        lines.append("")
+        lines.append(post.rstrip("\n"))
+
+    when = entry.get("when")
+    if when:
+        lines.append("")
+        lines.append(f"when: {when}")
+
+    return "\n".join(lines)
+
+
 def build_message(day, data):
-    """Compose the one casual, lowercase Slack message: task + date."""
+    """Compose the one casual, lowercase Slack message for today."""
     # Shadowban overrides everything — kill the task, send them to appeal.
     if data.get("shadowbanned"):
         return (
@@ -87,21 +114,23 @@ def build_message(day, data):
         )
 
     date_str = day["today"].isoformat()
+    details = format_entry(day["entry"])
 
     if day["prelaunch"]:
         return (
             f"hey! we haven't officially started yet 🌱 ({date_str})\n\n"
-            f"day 1 kicks off {day['start_date']}. here's the plan for it:\n"
-            f"day 1: {day['entry']['goal']}"
+            f"day 1 kicks off {day['start_date']}. here's the plan for it:\n\n"
+            f"{details}"
         )
     if day["finished"]:
         return (
-            f"that's a wrap on the 14-day plan 🎉 nice work. ({date_str})\n\n"
-            f"today (day {day['shown_day']}, keeping it going): {day['entry']['goal']}"
+            f"that's a wrap on the plan 🎉 nice work. ({date_str})\n\n"
+            f"today (day {day['shown_day']}, keeping it going):\n\n"
+            f"{details}"
         )
     return (
         f"morning! day {day['shown_day']} of the reddit grind 🌱 ({date_str})\n\n"
-        f"today: {day['entry']['goal']}"
+        f"{details}"
     )
 
 
