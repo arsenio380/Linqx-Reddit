@@ -50,10 +50,6 @@ def _defaults():
         # Set to True by health.py when u/<account> looks shadowbanned.
         # coach.py reads this to override the day's task with an appeal.
         "shadowbanned": False,
-        # Overnight hits recorded by the listener, e.g.
-        #   [{"found_at": "2026-08-21T03:12:00", "subreddit": "AskLosAngeles",
-        #     "keyword": "new to LA", "title": "...", "permalink": "https://..."}]
-        "listener_hits": [],
     }
 
 

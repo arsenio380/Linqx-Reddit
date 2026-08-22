@@ -9,5 +9,5 @@ requests>=2.31
 python-dotenv>=1.0
 
 # Parses plan.yaml — the account name and 14-day launch schedule for
-# health.py and coach.py, and listen_subs/listen_keywords for listener.py.
+# health.py and coach.py.
 PyYAML>=6.0
