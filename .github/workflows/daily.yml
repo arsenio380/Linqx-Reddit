@@ -1,0 +1,65 @@
+name: Daily Reddit launch assistant
+
+on:
+  schedule:
+    # Morning run (15:00 UTC = 8am PT): health check, then the full nudge.
+    - cron: "0 15 * * *"
+    # Evening run (02:00 UTC = 7pm PT same day): only nudge if today's
+    # task isn't done yet.
+    - cron: "0 2 * * *"
+  # Allow manual runs from the Actions tab (behaves like the morning run).
+  workflow_dispatch:
+
+# Let the job commit the updated state.json back to the repo.
+permissions:
+  contents: write
+
+# Never let two runs push state.json at the same time.
+concurrency:
+  group: daily-launch-assistant
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # Cron fires in UTC, but the scripts compute "today" from the local
+      # clock. Pin the runner to Pacific so the 02:00 UTC evening run still
+      # counts as the same PT day as the 15:00 UTC morning run.
+      TZ: America/Los_Angeles
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Morning schedule (and manual runs): health check, then the coach.
+      - name: Health check and morning nudge
+        if: github.event.schedule != '0 2 * * *'
+        run: |
+          python health.py
+          python coach.py
+
+      # Evening schedule: only send a nudge if today isn't done yet.
+      - name: Evening reminder (skip if today is done)
+        if: github.event.schedule == '0 2 * * *'
+        run: python coach.py --skip-if-done
+
+      - name: Commit updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain state.json)" ]; then
+            echo "state.json unchanged; nothing to commit."
+          else
+            git add state.json
+            git commit -m "chore: update state.json [skip ci]"
+            git push
+          fi

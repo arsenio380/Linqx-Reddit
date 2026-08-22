@@ -36,8 +36,6 @@ def _defaults():
         "karma_history": [],
         # Day numbers that have been fully completed.
         "completed_days": [],
-        # Reddit post IDs we've already processed, so we don't repeat.
-        "seen_post_ids": [],
         # ISO timestamp of the last successful health check, or None.
         "last_health_check": None,
         # How many days the schedule has slipped because karma targets
@@ -50,10 +48,6 @@ def _defaults():
         # Set to True by health.py when u/<account> looks shadowbanned.
         # coach.py reads this to override the day's task with an appeal.
         "shadowbanned": False,
-        # Overnight hits recorded by the listener, e.g.
-        #   [{"found_at": "2026-08-21T03:12:00", "subreddit": "AskLosAngeles",
-        #     "keyword": "new to LA", "title": "...", "permalink": "https://..."}]
-        "listener_hits": [],
     }
 
 

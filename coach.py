@@ -143,31 +143,7 @@ def resolve_day(plan, data, today, start_date):
     }
 
 
-def overnight_hits(data, today):
-    """Return listener hits recorded since yesterday morning.
-
-    The listener writes into state["listener_hits"] with a "found_at"
-    ISO timestamp. "Overnight" = anything from the last ~24 hours. Hits
-    without a timestamp are included (better to over-report a lead).
-    """
-    cutoff = datetime.datetime.combine(today, datetime.time()) - datetime.timedelta(hours=12)
-    fresh = []
-    for hit in data.get("listener_hits") or []:
-        stamp = hit.get("found_at")
-        if not stamp:
-            fresh.append(hit)
-            continue
-        try:
-            when = datetime.datetime.fromisoformat(stamp)
-        except ValueError:
-            fresh.append(hit)
-            continue
-        if when >= cutoff:
-            fresh.append(hit)
-    return fresh
-
-
-def build_message(day, threads, hits, data):
+def build_message(day, threads, data):
     """Compose the one casual, lowercase Slack message."""
     # Shadowban overrides everything — kill the task, send them to appeal.
     if data.get("shadowbanned"):
@@ -225,25 +201,26 @@ def build_message(day, threads, hits, data):
     else:
         lines.append("no rising threads in the sweet spot right now — try again in an hour")
 
-    # Overnight listener hits.
-    if hits:
-        lines.append("")
-        lines.append("overnight the listener caught a few leads:")
-        for hit in hits:
-            kw = hit.get("keyword")
-            tag = f'"{kw}" — ' if kw else ""
-            sub = hit.get("subreddit", "?")
-            title = hit.get("title", "(no title)")
-            link = hit.get("permalink", "")
-            lines.append(f"• {tag}{title}  (r/{sub}) → {link}")
-
     lines.append("")
     lines.append("go get em 🚀")
     return "\n".join(lines)
 
 
+def add_arguments(parser):
+    parser.add_argument(
+        "--skip-if-done",
+        action="store_true",
+        help=(
+            "Don't send anything if today's plan day is already marked "
+            "done (in completed_days). Used by the evening reminder run."
+        ),
+    )
+
+
 def main():
-    args = cli.parse_args("Send today's casual Reddit-launch nudge to Slack.")
+    args = cli.parse_args(
+        "Send today's casual Reddit-launch nudge to Slack.", add_arguments
+    )
 
     plan = load_plan()
     data = state.load()
@@ -252,15 +229,19 @@ def main():
 
     day = resolve_day(plan, data, today, start_date)
 
+    # Evening reminder: stay quiet if today's task is already done.
+    if args.skip_if_done and day["shown_day"] in (data.get("completed_days") or []):
+        print(f"day {day['shown_day']} already marked done — staying quiet.")
+        return
+
     # Only bother fetching threads when there's a task to do (skip on a
     # shadowban — we're telling them to stop posting).
     if data.get("shadowbanned"):
-        threads, hits = [], []
+        threads = []
     else:
         threads = pick_rising_threads(plan["karma_subs"])
-        hits = overnight_hits(data, today)
 
-    message = build_message(day, threads, hits, data)
+    message = build_message(day, threads, data)
 
     # Preview the exact message so --dry-run is actually useful.
     print(message)
