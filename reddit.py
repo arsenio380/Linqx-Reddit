@@ -61,6 +61,7 @@ def _simplify_post(child):
     return {
         "id": data.get("id"),
         "title": data.get("title"),
+        "selftext": data.get("selftext", ""),
         "author": data.get("author"),
         "subreddit": data.get("subreddit"),
         "score": data.get("score"),
