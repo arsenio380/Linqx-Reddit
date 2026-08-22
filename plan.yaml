@@ -2,20 +2,349 @@ start_date: 2026-08-22
 account: arsenbuildz
 launch_day: 12
 
-karma_subs: [AskReddit, NoStupidQuestions, CasualConversation, explainlikeimfive]
+# ---------------------------------------------------------------
+# PHASE 1 — days 1-11: build a real account. no linqx mentions.
+# PHASE 2 — days 12-21: launch week. post, reply, follow up.
+# PHASE 3 — days 22-42: weekly rhythm. one post a week, daily light comments. UCLA move-in wave.
+# PHASE 4 — days 43-60: maintenance + IRL. meetups, second megathread, 60-day review.
+#
+# every day you skip the routine, you can just mark it done and move on.
+# the plan survives skipped days. it doesn't survive quitting.
+# ---------------------------------------------------------------
 
 days:
-  - {day: 1,  goal: "Set up profile, join subs, lurk. No posts.", karma_target: 0,   task_type: setup}
-  - {day: 2,  goal: "10-15 comments in karma subs, sort by Rising", karma_target: 40,  task_type: karma}
-  - {day: 3,  goal: "10-15 comments", karma_target: 80,  task_type: karma}
-  - {day: 4,  goal: "10-15 comments", karma_target: 120, task_type: karma}
-  - {day: 5,  goal: "Comments + start participating in LA/college subs", karma_target: 170, task_type: karma}
-  - {day: 6,  goal: "Comments across mixed subs", karma_target: 220, task_type: karma}
-  - {day: 7,  goal: "Comments. Run a shadowban check.", karma_target: 260, task_type: karma}
-  - {day: 8,  goal: "Read r/SideProject and r/startups rules end to end. Draft founder post.", karma_target: 300, task_type: prep}
-  - {day: 9,  goal: "Modmail r/ucla and r/USC about founder launch posts. Keep commenting.", karma_target: 330, task_type: prep}
-  - {day: 10, goal: "Post the no-link 'how do people make friends in LA' question in r/AskLosAngeles", karma_target: 350, task_type: post}
-  - {day: 11, goal: "Post in r/startups Share Your Startup megathread", karma_target: 370, task_type: post}
-  - {day: 12, goal: "LAUNCH: founder story to r/SideProject, 8-11am PT, App Store link. Reply to every comment.", karma_target: 400, task_type: launch}
-  - {day: 13, goal: "Post 'early LA users wanted' to r/iosapps. Comment (no link) in r/socialskills.", karma_target: 400, task_type: post}
-  - {day: 14, goal: "Thank commenters, post milestone update where allowed.", karma_target: 400, task_type: post}
+  # ---------------- PHASE 1: build the account ----------------
+  - day: 1
+    goal: "set up profile, join subs, lurk. no posting."
+    where: "add avatar + one-line bio. join: r/AskReddit, r/NoStupidQuestions, r/CasualConversation, r/LosAngeles, r/AskLosAngeles, r/ucla, r/USC, r/SideProject, r/startups, r/iosapps, r/AlphaAndBetaUsers"
+
+  - day: 2
+    goal: "10-15 comments. real opinions, full sentences."
+    where: "reddit.com/r/AskReddit/rising and reddit.com/r/NoStupidQuestions/rising — posts under 2 hrs old, 50-200 upvotes"
+    when: "spread across the day"
+
+  - day: 3
+    goal: "10-15 comments"
+    where: "same rising feeds. target karma: 80"
+
+  - day: 4
+    goal: "10-15 comments"
+    where: "same. target karma: 120"
+
+  - day: 5
+    goal: "10-15 comments, and today start showing up in LA"
+    where: "5 in rising feeds + 5 in reddit.com/r/AskLosAngeles/new and reddit.com/r/LosAngeles/new — look for 'just moved', 'how do i meet people'. reply like a person who gets it. no linqx, no link."
+
+  - day: 6
+    goal: "10-15 comments, mixed"
+    where: "half rising feeds, half LA subs + r/ucla/new and r/USC/new. USC semester just started — freshmen are posting. target karma: 220"
+
+  - day: 7
+    goal: "10-15 comments. check your profile loads logged-out."
+    where: "same spread. open reddit.com/u/arsenbuildz in an incognito window — if it 404s you're shadowbanned, stop and tell claude."
+
+  - day: 8
+    goal: "read the rules. draft the launch post."
+    where: "read reddit.com/r/SideProject/about/rules and reddit.com/r/startups/about/rules top to bottom. then edit the post below until it sounds like you."
+    post: |
+      TITLE: we met on bumble bff and built the app we wish existed for making friends in LA
+
+      i moved to LA and had no one. tried bumble bff, which is actually where i met my cofounder — so it kind of worked, but mostly it was a lot of chatting that never turned into anything real.
+
+      so we built linqx. you match on shared interests, pick an actual thing to do together, and meet up in person. you only unlock each other's contact info after you've actually hung out. the whole point is getting off the app.
+
+      we're live in LA only right now — starting with USC/UCLA and a handful of venues we've partnered with. it's on the app store: [LINK]
+
+      would love honest feedback, especially from anyone who's tried to make friends as an adult in a new city. what would make you actually use something like this?
+
+  - day: 9
+    goal: "5 comments + modmail two subs"
+    where: "send a modmail to r/ucla and r/USC ('message the moderators' in each sidebar). keep commenting in LA subs."
+    post: |
+      hey mods — i'm a founder building an app for meeting people irl in LA, launching this week, starting with USC/UCLA. wanted to ask before posting: would a short founder post be ok here, or is there a better way to share it with students? happy to follow whatever format works for you. thanks.
+
+  - day: 10
+    goal: "first real post. no link."
+    where: "reddit.com/r/AskLosAngeles — text post"
+    when: "8-10am PT"
+    post: |
+      TITLE: how are people actually making friends in LA in 2026?
+
+      moved here a while back and everything feels like either a dating app or a $40 ticketed event. run clubs are cool but everyone's kind of in their own thing.
+
+      genuinely asking — what's worked for you? especially if you're not in school anymore.
+
+  - day: 11
+    goal: "post in the r/startups monthly megathread"
+    where: "reddit.com/r/startups — find the pinned 'share your startup' thread, reply inside it. do NOT make a new post."
+    post: |
+      linqx — meet people irl in LA
+
+      match on shared interests, pick an actual thing to do, meet in person. you only unlock contact info after you've hung out. we vet the venues and events, not the people — the point is you meet somewhere good, not that we screen humans.
+
+      launching on the app store this week, LA only to start (USC/UCLA + partner venues). two cofounders who met on bumble bff and were annoyed that nothing turned into a real hangout.
+
+      looking for: early LA users, and honest takes on the meet-first-then-unlock-contact mechanic.
+
+  # ---------------- PHASE 2: launch week ----------------
+  - day: 12
+    goal: "LAUNCH. post it. reply to every comment for 6 hours."
+    where: "reddit.com/r/SideProject — text post. add flair if required. put the live app store link at [LINK]. if the app isn't live, do NOT post — push start_date instead."
+    when: "8-11am PT, tue-thu ideally"
+    post: "use the launch post you edited on day 8"
+
+  - day: 13
+    goal: "second post + keep replying"
+    where: "reddit.com/r/iosapps — text post. then go back to the r/SideProject post and answer anything new."
+    post: |
+      TITLE: made an ios app for meeting people irl in LA — looking for early users
+
+      linqx. match on interests, pick a real plan, meet up, then unlock contact info. LA only for now. app store link: [LINK]
+
+      honest feedback wanted, especially on onboarding.
+
+  - day: 14
+    goal: "reply to stragglers. if r/ucla or r/USC mods said yes, post there today."
+    where: "whichever sub approved. keep it short and student-facing."
+    post: |
+      TITLE: built an app for meeting people irl — LA only, starting with [USC/UCLA]
+
+      cofounder and i met on bumble bff and got tired of chats that never became hangouts. so we made linqx: match on interests, pick a real plan, meet up, unlock contact info after. we've partnered with a few spots near campus. app store: [LINK]
+
+      if you're new this semester and trying to find your people, would love to hear what's worked and what hasn't.
+
+  - day: 15
+    goal: "rest day from posting. 5 comments in LA subs."
+    where: "r/AskLosAngeles/new, r/LosAngeles/new. still no link-dropping in LA subs — if someone asks, DM them or say 'it's called linqx' and leave it."
+
+  - day: 16
+    goal: "early-user post"
+    where: "reddit.com/r/AlphaAndBetaUsers — text post"
+    post: |
+      TITLE: [LA only] meet-people-irl app, looking for early users who'll tell us what's broken
+
+      linqx, on the app store now. you match on interests, pick something to actually do, meet in person, then unlock contact. we want people who'll use it for real and tell us where it falls apart. LA only for now. [LINK]
+
+  - day: 17
+    goal: "5 comments. read every comment on your launch post again."
+    where: "pull the three most-repeated pieces of feedback into a note. you'll use them on day 21."
+
+  - day: 18
+    goal: "5 comments, mixed subs"
+    where: "2 in rising feeds, 3 in LA/college subs. keeping the account alive is the whole job this week."
+
+  - day: 19
+    goal: "5 comments"
+    where: "r/socialskills/new — find someone asking how to make friends after college. answer for real. no link. this is long-game credibility."
+
+  - day: 20
+    goal: "5 comments"
+    where: "same spread. check karma, check profile loads logged-out."
+
+  - day: 21
+    goal: "week-one retro post"
+    where: "reddit.com/r/SideProject — text post. use real numbers, even if small. honest beats impressive here."
+    post: |
+      TITLE: launched a meet-people-irl app on reddit a week ago — here's what actually happened
+
+      posted here last week. since then: [X] downloads, [Y] signups, [Z] people who actually met up. the three things you told us that we didn't expect: [feedback 1], [feedback 2], [feedback 3].
+
+      what we're changing because of it: [one concrete change].
+
+      still LA only. still the same link: [LINK]. thanks for being honest last time, keep it coming.
+
+  # ---------------- PHASE 3: weekly rhythm ----------------
+  - day: 22
+    goal: "light day. 3 comments."
+    where: "anywhere you've been. from here on, 3-5 comments a day is enough. one post a week."
+
+  - day: 23
+    goal: "3-5 comments"
+    where: "LA subs. watch for 'new to LA' posts — these are your people."
+
+  - day: 24
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 25
+    goal: "lessons post, no link"
+    where: "reddit.com/r/Entrepreneur — text post. this sub bans promo, so NO app name, NO link. just the lesson."
+    post: |
+      TITLE: launched a consumer app through reddit instead of paid ads. what worked and what didn't
+
+      built a social app, zero marketing budget, launched it through founder posts here instead of ads. [X] downloads in [N] days.
+
+      what worked: posting in subs that actually welcome founders, replying to every single comment for hours, and being in the LA subs for two weeks as a normal person before ever mentioning what i was building.
+
+      what didn't: [one honest miss].
+
+      the thing i'd tell anyone doing this: your account history matters more than your post. nobody clicks a link from a day-old account.
+
+  - day: 26
+    goal: "3-5 comments"
+    where: "reply to anything on yesterday's post. LA subs."
+
+  - day: 27
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 28
+    goal: "3-5 comments. sunday — can be zero."
+    where: "optional"
+
+  - day: 29
+    goal: "3-5 comments. prep for UCLA move-in."
+    where: "r/ucla/new — move-in and first-week posts start around now. be present. answer 'how do i meet people' threads as a person. no link."
+
+  - day: 30
+    goal: "30-day update post"
+    where: "reddit.com/r/SideProject — text post. short."
+    post: |
+      TITLE: 30 days after launching here — numbers and one thing we got wrong
+
+      a month ago i posted our meet-people-irl app here. [X] downloads, [Y] real meetups happened. the thing we got wrong: [honest miss]. the thing that surprised us: [one surprise].
+
+      next: [one concrete next step]. [LINK]
+
+  - day: 31
+    goal: "3-5 comments, UCLA focus"
+    where: "r/ucla/new, r/USC/new. move-in week is the highest-value window of the whole 60 days. be useful in every new-student thread you can find."
+
+  - day: 32
+    goal: "3-5 comments, UCLA focus"
+    where: "same"
+
+  - day: 33
+    goal: "UCLA post, if mods approved back on day 9. if not, comments only."
+    where: "reddit.com/r/ucla — text post, student-facing"
+    post: |
+      TITLE: new to UCLA and trying to find your people? built an app for that
+
+      i'm a founder, not a student, so ignore this if it's not your thing. cofounder and i built linqx because making friends as an adult in LA was brutal — match on interests, pick a real plan, meet up, unlock contact after. we've got a couple of spots near campus on it. app store: [LINK]
+
+      if you're a transfer or first-year and it's week one — what's actually helping you meet people so far?
+
+  - day: 34
+    goal: "3-5 comments"
+    where: "reply to anything on yesterday's post. mixed."
+
+  - day: 35
+    goal: "3-5 comments. sunday, can be zero."
+    where: "optional"
+
+  - day: 36
+    goal: "3-5 comments"
+    where: "LA subs"
+
+  - day: 37
+    goal: "plan the first IRL meetup"
+    where: "no posting today. pick one partner venue and a date ~10 days out. you'll announce it on day 40. LA subs allow event posts when it's a real event, not an ad."
+
+  - day: 38
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 39
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 40
+    goal: "announce the meetup + new month = r/startups megathread again"
+    where: "two things: (1) reddit.com/r/AskLosAngeles or r/LosAngeles — event post, check sidebar for event flair. (2) the new pinned 'share your startup' thread in r/startups — short update inside it."
+    post: |
+      TITLE: free meetup at [VENUE] on [DATE] for anyone trying to meet people in LA
+
+      we're the people behind linqx (meet-people-irl app). hosting a no-pressure hangout at [VENUE] on [DATE], [TIME]. free, no app required — just show up. [short detail: what it is, what to expect].
+
+      if you've been meaning to meet people here and haven't, this is the easy version.
+
+  - day: 41
+    goal: "3-5 comments. reply on the event post."
+    where: "event post + LA subs"
+
+  - day: 42
+    goal: "3-5 comments. sunday, can be zero."
+    where: "optional"
+
+  # ---------------- PHASE 4: maintenance + IRL ----------------
+  - day: 43
+    goal: "3-5 comments"
+    where: "LA subs. keep the event post alive by answering questions."
+
+  - day: 44
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 45
+    goal: "3-5 comments"
+    where: "mixed. check karma, check profile loads logged-out."
+
+  - day: 46
+    goal: "3-5 comments"
+    where: "LA subs, college subs"
+
+  - day: 47
+    goal: "MEETUP DAY (if you scheduled it for today). take photos."
+    where: "be there. take photos people are ok with being posted. get a rough headcount."
+
+  - day: 48
+    goal: "meetup recap post"
+    where: "same sub you announced in. photos if you have them."
+    post: |
+      TITLE: we hosted a free meetup for people trying to make friends in LA — here's how it went
+
+      [X] people showed up to [VENUE] on [DATE]. [one real moment from the night]. [one thing you'd change].
+
+      doing it again [rough timing]. if you came — thank you. if you didn't — next one's yours.
+
+  - day: 49
+    goal: "3-5 comments. sunday, can be zero."
+    where: "optional"
+
+  - day: 50
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 51
+    goal: "3-5 comments"
+    where: "r/socialskills/new, r/AskLosAngeles/new"
+
+  - day: 52
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 53
+    goal: "r/iosapps update post, if you've shipped something new"
+    where: "reddit.com/r/iosapps — only if there's a real update. if not, skip."
+    post: |
+      TITLE: update: meet-people-irl app, one month in — we added [FEATURE]
+
+      posted here at launch. since then [X] downloads and the most-requested thing was [FEATURE], so it's in. still LA only. [LINK]
+
+  - day: 54
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 55
+    goal: "3-5 comments"
+    where: "LA subs"
+
+  - day: 56
+    goal: "3-5 comments. sunday, can be zero."
+    where: "optional"
+
+  - day: 57
+    goal: "plan meetup #2"
+    where: "pick venue and date. announce on day 58."
+
+  - day: 58
+    goal: "announce meetup #2"
+    where: "same sub as last time. reuse the day 40 post with new details."
+
+  - day: 59
+    goal: "3-5 comments"
+    where: "mixed"
+
+  - day: 60
+    goal: "60-day review. no posting."
+    where: "pull the numbers: app store installs with reddit as source, total karma, which post drove the most downloads, how many people came to the meetup. bring them to claude and decide: keep the weekly rhythm, or drop to maintenance and move the energy to instagram/tiktok/venues."
