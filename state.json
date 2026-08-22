@@ -2,8 +2,17 @@
   "completed_days": [],
   "current_day": 1,
   "day_offset": 0,
+  "health": {
+    "account": "arsenbuildz",
+    "alerted": false,
+    "checked_at": "2026-08-21T22:18:55",
+    "date": "2026-08-21",
+    "shadowbanned": null,
+    "status": "unknown",
+    "total_karma": null
+  },
   "karma_history": [],
-  "last_health_check": null,
+  "last_health_check": "2026-08-21T22:18:55",
   "last_offset_date": null,
   "listener_hits": [],
   "seen_post_ids": [],
