@@ -7,3 +7,6 @@ requests>=2.31
 # Loads variables from the local .env file so scripts can read
 # SLACK_WEBHOOK_URL without you exporting it by hand.
 python-dotenv>=1.0
+
+# Parses plan.yaml (used by health.py to read the account name).
+PyYAML>=6.0
