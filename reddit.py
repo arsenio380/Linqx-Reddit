@@ -96,6 +96,16 @@ def hot_posts(subreddit, limit=10):
     return _listing(subreddit, "hot", limit)
 
 
+def rising_posts(subreddit, limit=25):
+    """Return the rising posts in a subreddit (list of simple dicts).
+
+    "Rising" surfaces threads that are gaining traction right now, which
+    is where a comment has the best chance of being seen — ask for a
+    generous limit and let the caller filter by age/score.
+    """
+    return _listing(subreddit, "rising", limit)
+
+
 def user_karma(username):
     """Return a user's karma as a dict, or None if it can't be read.
 
