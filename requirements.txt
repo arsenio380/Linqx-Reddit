@@ -5,9 +5,12 @@
 requests>=2.31
 
 # Loads variables from the local .env file so scripts can read
-# SLACK_WEBHOOK_URL without you exporting it by hand.
+# SLACK_WEBHOOK_URL / ANTHROPIC_API_KEY without you exporting them by hand.
 python-dotenv>=1.0
 
-# Parses plan.yaml — the account name for health.py and the 14-day
-# launch schedule for coach.py.
+# Parses plan.yaml — the account name and 14-day launch schedule for
+# health.py and coach.py, and listen_subs/listen_keywords for listener.py.
 PyYAML>=6.0
+
+# Anthropic (Claude) API — listener.py uses it to judge each post.
+anthropic>=0.40
