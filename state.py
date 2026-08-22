@@ -40,6 +40,20 @@ def _defaults():
         "seen_post_ids": [],
         # ISO timestamp of the last successful health check, or None.
         "last_health_check": None,
+        # How many days the schedule has slipped because karma targets
+        # weren't met. coach.py bumps this by one on each day we're behind
+        # so the plan (and every day after it) shifts back accordingly.
+        "day_offset": 0,
+        # The last date coach.py adjusted day_offset, so a second run on
+        # the same day can't slip the schedule twice.
+        "last_offset_date": None,
+        # Set to True by health.py when u/<account> looks shadowbanned.
+        # coach.py reads this to override the day's task with an appeal.
+        "shadowbanned": False,
+        # Overnight hits recorded by the listener, e.g.
+        #   [{"found_at": "2026-08-21T03:12:00", "subreddit": "AskLosAngeles",
+        #     "keyword": "new to LA", "title": "...", "permalink": "https://..."}]
+        "listener_hits": [],
     }
 
 
