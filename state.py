@@ -36,8 +36,6 @@ def _defaults():
         "karma_history": [],
         # Day numbers that have been fully completed.
         "completed_days": [],
-        # Reddit post IDs we've already processed, so we don't repeat.
-        "seen_post_ids": [],
         # ISO timestamp of the last successful health check, or None.
         "last_health_check": None,
         # How many days the schedule has slipped because karma targets

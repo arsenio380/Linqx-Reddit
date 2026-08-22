@@ -3,8 +3,6 @@ account: arsenbuildz
 launch_day: 12
 
 karma_subs: [AskReddit, NoStupidQuestions, CasualConversation, explainlikeimfive]
-listen_subs: [LosAngeles, AskLosAngeles, ucla, USC, socialskills, Needafriend, MakeNewFriendsHere]
-listen_keywords: ["new to LA", "new in LA", "moving to LA", "just moved", "make friends", "making friends", "meet people", "meeting people", "lonely", "no friends", "friend group", "social life", "freshman", "transfer student", "hard to meet"]
 
 days:
   - {day: 1,  goal: "Set up profile, join subs, lurk. No posts.", karma_target: 0,   task_type: setup}

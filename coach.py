@@ -206,8 +206,21 @@ def build_message(day, threads, data):
     return "\n".join(lines)
 
 
+def add_arguments(parser):
+    parser.add_argument(
+        "--skip-if-done",
+        action="store_true",
+        help=(
+            "Don't send anything if today's plan day is already marked "
+            "done (in completed_days). Used by the evening reminder run."
+        ),
+    )
+
+
 def main():
-    args = cli.parse_args("Send today's casual Reddit-launch nudge to Slack.")
+    args = cli.parse_args(
+        "Send today's casual Reddit-launch nudge to Slack.", add_arguments
+    )
 
     plan = load_plan()
     data = state.load()
@@ -215,6 +228,11 @@ def main():
     start_date = parse_start_date(plan)
 
     day = resolve_day(plan, data, today, start_date)
+
+    # Evening reminder: stay quiet if today's task is already done.
+    if args.skip_if_done and day["shown_day"] in (data.get("completed_days") or []):
+        print(f"day {day['shown_day']} already marked done — staying quiet.")
+        return
 
     # Only bother fetching threads when there's a task to do (skip on a
     # shadowban — we're telling them to stop posting).

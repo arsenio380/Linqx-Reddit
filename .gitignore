@@ -1,9 +1,6 @@
 # Secrets — never commit these.
 .env
 
-# Local runtime state written by state.py.
-state.json
-
 # Python cruft.
 __pycache__/
 *.pyc
