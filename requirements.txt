@@ -8,7 +8,8 @@ requests>=2.31
 # SLACK_WEBHOOK_URL / ANTHROPIC_API_KEY without you exporting them by hand.
 python-dotenv>=1.0
 
-# Reads plan.yaml (listen_subs, listen_keywords) in listener.py.
+# Parses plan.yaml — the account name and 14-day launch schedule for
+# health.py and coach.py, and listen_subs/listen_keywords for listener.py.
 PyYAML>=6.0
 
 # Anthropic (Claude) API — listener.py uses it to judge each post.
