@@ -7,3 +7,6 @@ requests>=2.31
 # Loads variables from the local .env file so scripts can read
 # SLACK_WEBHOOK_URL without you exporting it by hand.
 python-dotenv>=1.0
+
+# Reads plan.yaml (the 14-day launch schedule) in coach.py.
+PyYAML>=6.0
